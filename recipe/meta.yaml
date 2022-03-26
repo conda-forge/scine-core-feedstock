@@ -17,12 +17,13 @@ source:
 
 build:
   number: 0
-  skip: true  # [win or osx]
+  skip: true  # [win]
   script:
-    - set -ex
+    - set -ex  # [unix]
     - >
        cmake
-       ${CMAKE_ARGS}
+       ${CMAKE_ARGS}  # [unix]
+       -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX%  # [win]
        -B _build -G Ninja
        -DSCINE_MARCH=""
     - cmake --build _build
@@ -41,17 +42,17 @@ requirements:
     - pkg-config
     - llvm-openmp  # [osx]
     - libgomp  # [linux]
+  host:
     - gtest
     - gmock
-  host:
     - boost-cpp
   run:
     - boost-cpp
 
 test:
   commands:
-    - test -f $PREFIX/lib/lib{{ name }}${SHLIB_EXT}
-
+    - test -f $PREFIX/lib/lib{{ name }}${SHLIB_EXT}  # [unix]
+    - if not exist %LIBRARY_PREFIX%\lib\{{ name }}.dll exit 1  # [win]
 
 about:
   license: BSD-3-Clause
