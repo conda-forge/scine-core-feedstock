@@ -21,7 +21,11 @@ build:
   script:
     - set -ex  # [unix]
     - >
-      cmake ${CMAKE_ARGS}  # [unix] -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX%  # [win] -B _build -G Ninja -DSCINE_MARCH=""
+       cmake
+       ${CMAKE_ARGS}  # [unix]
+       -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX%  # [win]
+       -B _build -G Ninja
+       -DSCINE_MARCH=""
     - cmake --build _build
     - ctest --test-dir _build --output-on-failure  # [build_platform == target_platform]
     - cmake --install _build
