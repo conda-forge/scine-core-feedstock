@@ -10,8 +10,8 @@ source:
   - url: https://github.com/qcscine/core/archive/refs/tags/{{ version }}.tar.gz
     sha256: 7181c6f93d71def22f1e0e5767afc7587c04b49abc03516f6926394868e7adc6
     fn: {{ name }}.tar.gz
-  - url: https://github.com/qcscine/development-utils/archive/refs/tags/4.0.0.tar.gz
-    sha256: 54002c2082b6bb75672ec66bf9cf3935bbdf6b085ed9b4d7174cbdedb7c2275d
+  - url: https://github.com/qcscine/development-utils/archive/refs/tags/5.0.1.tar.gz
+    sha256: 089ca500fc191e04a968ea166d2fe80178b227bc2e6d3926523fa2eee5f6492d
     fn: dev.tar.gz
     folder: dev
 
@@ -20,8 +20,7 @@ build:
   skip: true  # [win]
   script:
     - set -ex  # [unix]
-    - >
-      cmake ${CMAKE_ARGS}  # [unix] -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX%  # [win] -B _build -G Ninja -DSCINE_MARCH=""
+    - cmake ${CMAKE_ARGS} -B _build -G Ninja -DSCINE_MARCH=""
     - cmake --build _build
     - ctest --test-dir _build --output-on-failure  # [build_platform == target_platform]
     - cmake --install _build
