@@ -1,6 +1,6 @@
 {% set name = "core" %}
 {% set pkg_name = "scine-" + name %}
-{% set version = "4.0.1" %}
+{% set version = "4.0.2" %}
 
 package:
   name: {{ pkg_name }}
@@ -8,7 +8,7 @@ package:
 
 source:
   - url: https://github.com/qcscine/core/archive/refs/tags/{{ version }}.tar.gz
-    sha256: 330a706945200513aa666200b1a0ba8aa38f50ea6aa1abcbad2940cfb7628bb1
+    sha256: 7181c6f93d71def22f1e0e5767afc7587c04b49abc03516f6926394868e7adc6
     fn: {{ name }}.tar.gz
   - url: https://github.com/qcscine/development-utils/archive/refs/tags/4.0.0.tar.gz
     sha256: 54002c2082b6bb75672ec66bf9cf3935bbdf6b085ed9b4d7174cbdedb7c2275d
@@ -21,11 +21,7 @@ build:
   script:
     - set -ex  # [unix]
     - >
-       cmake
-       ${CMAKE_ARGS}  # [unix]
-       -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX%  # [win]
-       -B _build -G Ninja
-       -DSCINE_MARCH=""
+      cmake ${CMAKE_ARGS}  # [unix] -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX%  # [win] -B _build -G Ninja -DSCINE_MARCH=""
     - cmake --build _build
     - ctest --test-dir _build --output-on-failure  # [build_platform == target_platform]
     - cmake --install _build
