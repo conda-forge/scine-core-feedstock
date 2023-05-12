@@ -1,6 +1,6 @@
 {% set name = "core" %}
 {% set pkg_name = "scine-" + name %}
-{% set version = "4.1.0" %}
+{% set version = "5.0.0" %}
 
 package:
   name: {{ pkg_name }}
@@ -8,7 +8,7 @@ package:
 
 source:
   - url: https://github.com/qcscine/core/archive/refs/tags/{{ version }}.tar.gz
-    sha256: 0313d5a2ebe014c9005b81e7c6463e353f91796d3411baf1b7894a5db199646c
+    sha256: 4c13eeacf1b470d27b6413e2edd6c5b953acc64a8d07e3935a90585dafaaf250
     fn: {{ name }}.tar.gz
   - url: https://github.com/qcscine/development-utils/archive/refs/tags/5.0.1.tar.gz
     sha256: 089ca500fc191e04a968ea166d2fe80178b227bc2e6d3926523fa2eee5f6492d
