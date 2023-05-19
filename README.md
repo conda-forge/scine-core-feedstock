@@ -1,11 +1,11 @@
-About scine-core
-================
+About scine-core-feedstock
+==========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/scine-core-feedstock/blob/main/LICENSE.txt)
 
 Home: https://scine.ethz.ch/
 
 Package license: BSD-3-Clause
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/scine-core-feedstock/blob/main/LICENSE.txt)
 
 Summary: Core provides the functionality necessary to couple the individual SCINE modules together.
 
