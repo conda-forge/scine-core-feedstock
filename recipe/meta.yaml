@@ -16,7 +16,7 @@ source:
     folder: dev
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
   script:
     - set -ex  # [unix]
@@ -40,9 +40,8 @@ requirements:
   host:
     - gtest
     - gmock
-    - boost-cpp
+    - libboost-devel
   run:
-    - boost-cpp
 
 test:
   commands:
